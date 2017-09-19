@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Twitter</title>
+</head>
+
+<body>
+    <h1>{{ title }}</h1>
+    <p>This is a bare-bones template.</p>
+    <ul>
+    {% for person in people %}
+        <li>{{ person.name }}</li>
+    {% endfor %}
+    </ul>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
