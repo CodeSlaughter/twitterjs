@@ -1,9 +1,9 @@
 const express = require( 'express' );
-
+const routes = require('./routes');
 const app = express();
 const nunjucks = require('nunjucks');
-const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
-
+const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}, {name: 'Jamie'}, {name: 'Patrick'}];
+const places = [{location: 'Chicago'}, {location: 'New Jersey(trashcan)'}, {location: 'New York'}];
 // var locals = {
 //     title: 'An Example',
 //     people: [
@@ -25,19 +25,18 @@ app.engine('html', nunjucks.render); // when giving html files to res.render, te
 nunjucks.configure('views');
 
 
-
-app.use(function (req, res, next) {
+app.use(routes, function (req, res, next) {
     // do your logging here
     // call `next`, or else your app will be a black hole — receiving requests but never properly responding
     console.log(res, req);
     next();
 });
 
-app.get('/',function(req, res){
-    console.log("get running");
-    //res.render(__dirname + '/views/index.html');  
-    res.render( 'index', {title: 'Hall of Fame', people: people} );
-});
+// app.get('/',function(req, res){
+//     console.log("get running");
+//     //res.render(__dirname + '/views/index.html');  
+//     res.render( 'index', {title: 'Hall of Fame', people: people, places: places} );
+// });
 
 app.listen(3000, function(){
     console.log("Listening on port 3000");
